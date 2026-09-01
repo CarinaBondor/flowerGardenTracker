@@ -1,0 +1,55 @@
+<template>
+    <div class="task-list">
+        <article
+            v-for="task in tasks"
+            :key="task.id"
+        >
+            <label>
+                <input
+                    @input="emits('toggleDone', task.id)"
+                    :checked="task.done"
+                    type="checkbox"
+                />
+            </label>
+            <span :class="{ done: task.done }">{{ task.title }}</span>
+        </article>
+    </div>
+</template>
+
+<script lang="ts" setup>
+import type { Task } from "../types";
+
+const props = defineProps<{
+    tasks: Task[];
+}>();
+
+const emits = defineEmits<{
+    toggleDone: [id: string];
+}>();
+</script>
+
+<style>
+.task-list {
+    margin-top: 1rem;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.task-list-enter-active,
+.task-list-leave-active {
+    transition: all 0.5s ease;
+}
+.task-list-enter-from,
+.task-list-leave-to {
+    opacity: 0;
+    transform: translateX(300px);
+}
+</style>
