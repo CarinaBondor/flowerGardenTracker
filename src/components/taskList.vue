@@ -1,8 +1,13 @@
 <template>
-    <div class="task-list">
+    <TransitionGroup
+        name="task-list"
+        tag="div"
+        class="task-list"
+    >
         <article
             v-for="task in tasks"
             :key="task.id"
+            class="task"
         >
             <label>
                 <input
@@ -10,10 +15,17 @@
                     :checked="task.done"
                     type="checkbox"
                 />
+                <span :class="{ done: task.done }">{{ task.title }}</span>
             </label>
-            <span :class="{ done: task.done }">{{ task.title }}</span>
+
+            <button
+                @click="emits('removeTask', task.id)"
+                class="outline"
+            >
+                Remove
+            </button>
         </article>
-    </div>
+    </TransitionGroup>
 </template>
 
 <script lang="ts" setup>
@@ -25,6 +37,7 @@ const props = defineProps<{
 
 const emits = defineEmits<{
     toggleDone: [id: string];
+    removeTask: [id: string];
 }>();
 </script>
 
