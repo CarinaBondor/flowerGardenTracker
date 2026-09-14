@@ -1,5 +1,31 @@
-# Vue 3 + TypeScript + Vite
+# Flower Garden Tracker
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A small Nuxt 4 application for creating and tracking flower bouquets.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Requirements
+
+- Node.js 20 or later
+- npm
+
+## Setup
+
+```bash
+npm install
+npm run dev
+```
+
+Open the local URL shown in the terminal, usually `http://localhost:3000`.
+
+## Commands
+
+```bash
+npm run dev      # Start the development server
+npm run build    # Create a production build
+npm run preview  # Preview the production build
+```
+
+## Routes
+
+- `/` - Create and manage bouquets
+- `/about` - About the app
+- `/bouquet` - Quick bouquet page

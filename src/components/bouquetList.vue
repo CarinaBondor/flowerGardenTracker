@@ -1,25 +1,25 @@
 <template>
     <TransitionGroup
-        name="task-list"
+        name="bouquet-list"
         tag="div"
-        class="task-list"
+        class="bouquet-list"
     >
         <article
-            v-for="task in tasks"
-            :key="task.id"
-            class="task"
+            v-for="bouquet in bouquets"
+            :key="bouquet.id"
+            class="bouquet"
         >
             <label>
                 <input
-                    @input="emits('toggleDone', task.id)"
-                    :checked="task.done"
+                    @input="emits('toggleDone', bouquet.id)"
+                    :checked="bouquet.done"
                     type="checkbox"
                 />
-                <span :class="{ done: task.done }">{{ task.title }}</span>
+                <span :class="{ done: bouquet.done }">{{ bouquet.title }}</span>
             </label>
 
             <button
-                @click="emits('removeTask', task.id)"
+                @click="emits('removeBouquet', bouquet.id)"
                 class="outline"
             >
                 Remove
@@ -29,24 +29,24 @@
 </template>
 
 <script lang="ts" setup>
-import type { Task } from "../types";
+import type { Bouquet } from "../types.ts";
 
 const props = defineProps<{
-    tasks: Task[];
+    bouquets: Bouquet[];
 }>();
 
 const emits = defineEmits<{
     toggleDone: [id: string];
-    removeTask: [id: string];
+    removeBouquet: [id: string];
 }>();
 </script>
 
 <style>
-.task-list {
+.bouquet-list {
     margin-top: 1rem;
 }
 
-.task {
+.bouquet {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -56,12 +56,12 @@ const emits = defineEmits<{
     text-decoration: line-through;
 }
 
-.task-list-enter-active,
-.task-list-leave-active {
+.bouquet-list-enter-active,
+.bouquet-list-leave-active {
     transition: all 0.5s ease;
 }
-.task-list-enter-from,
-.task-list-leave-to {
+.bouquet-list-enter-from,
+.bouquet-list-leave-to {
     opacity: 0;
     transform: translateX(300px);
 }

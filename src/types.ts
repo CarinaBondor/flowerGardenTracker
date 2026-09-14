@@ -1,7 +1,7 @@
-export interface Task {
+export interface Bouquet {
     id: string;
     title: string;
     done: boolean;
 }
 
-export type TaskFilter = "all" | "todo" | "done";
+export type BouquetFilter = "all" | "todo" | "done";

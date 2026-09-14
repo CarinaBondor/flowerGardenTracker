@@ -1,11 +1,11 @@
 <template>
     <form @submit.prevent="formSubmitted">
-        <label for="flowerName">Flower Name:</label>
+        <label for="bouquetName">Create a bouquet!</label>
         <input
             type="text"
-            id="flowerName"
-            name="flowerName"
-            v-model="newTask"
+            id="bouquetName"
+            name="bouquetName"
+            v-model="newFlower"
             :aria-invalid="!!error || undefined"
             @input="error = ''"
         />
@@ -17,7 +17,7 @@
         </small>
 
         <div class="button-container">
-            <button type="submit">Add Flower</button>
+            <button type="submit">Add Bouquet</button>
         </div>
     </form>
 </template>
@@ -25,19 +25,19 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const newTask = ref("");
+const newFlower = ref("");
 const error = ref("");
 
 const emit = defineEmits<{
-    addTask: [newTask: string];
+    addBouquet: [newFlower: string];
 }>();
 
 function formSubmitted() {
-    if (newTask.value.trim()) {
-        emit("addTask", newTask.value.trim());
-        newTask.value = "";
+    if (newFlower.value.trim()) {
+        emit("addBouquet", newFlower.value.trim());
+        newFlower.value = "";
     } else {
-        error.value = "Task cannot be empty.";
+        error.value = "Bouquet cannot be empty.";
     }
 }
 </script>

@@ -9,15 +9,15 @@
 </template>
 
 <script setup lang="ts">
-import type { TaskFilter } from "../types";
+import type { BouquetFilter } from "../types";
 
 const props = defineProps<{
-    filter: TaskFilter;
-    currentFilter: TaskFilter;
+    filter: BouquetFilter;
+    currentFilter: BouquetFilter;
 }>();
 
 const emits = defineEmits<{
-    setFilter: [filter: TaskFilter];
+    setFilter: [filter: BouquetFilter];
 }>();
 </script>
 
