@@ -26,4 +26,4 @@ docs
 .nuxt
 .output
 .env
-
+.vscode
